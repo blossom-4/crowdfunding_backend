@@ -3,6 +3,7 @@ from django.apps import apps
 
  
 class FundraiserSerializer(serializers.ModelSerializer):
+  owner = serializers.ReadOnlyField(source='ownerid')
   class Meta:
        model = apps.get_model('fundraisers.Fundraiser')
        fields = '__all__'
