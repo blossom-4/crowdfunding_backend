@@ -24,9 +24,9 @@ class Pledge(models.Model):
       related_name='pledges',
       on_delete=models.CASCADE
    )
-supporter = models.ForeignKey(
-   get_user_model(),
-   related_name='pledges',
-   on_delete=models.CASCADE      
-   
-)
+   supporter = models.ForeignKey(
+      get_user_model(),
+      related_name='pledges',
+      on_delete=models.CASCADE      
+      
+   )

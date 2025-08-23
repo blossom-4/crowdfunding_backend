@@ -1,12 +1,13 @@
 # Crowdfunding Back End
-Break the Ceiling
+Raise the dead / Crowd Trial / Raise the Case / Crowd Court
 
 ## Planning:
 ### Concept/Name
-Warning: falling glass, women rising, patriarchy under demolition. Break the ceiling not the bank. 
+A crowd-powered platform where the public helps “try” cases and mysteries in the court of public opinion. Users can review details of real cases and vote on who they believe is guilty.
 
 ### Intended Audience/User Stories
-Activist, advocates and allies.
+Users - Victims who feel the justice system has failed them or can't access it. 
+Audience - True crime enthusiast, civil-minded citizens, gamified social media users, social justice warriors, investigators. 
 
 ### Front End Pages/Functionality
 - Homepage
