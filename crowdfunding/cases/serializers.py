@@ -1,34 +1,33 @@
 from rest_framework import serializers
 from django.apps import apps
 
-class FundraiserSerializer(serializers.ModelSerializer):
+class CaseSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.id')
     class Meta:
-        model = apps.get_model('fundraisers.Fundraiser')
+        model = apps.get_model('cases.Case')
         fields = '__all__'
 
 
-class PledgeSerializer(serializers.ModelSerializer):
+class JudgementSerializer(serializers.ModelSerializer):
     supporter = serializers.ReadOnlyField(source='supporter.id')
     class Meta:
-        model = apps.get_model('fundraisers.Pledge')
+        model = apps.get_model('cases.Judgement')
         fields = '__all__'
 
-class PledgeDetailSerializer(PledgeSerializer):
+class JudgementDetailSerializer(JudgementSerializer):
     def update(self, instance, validated_data):
-        instance.amount = validated_data.get('amount', instance.amount)
+        instance.verdict = validated_data.get('verdict', instance.verdict)
         instance.comment = validated_data.get('comment', instance.comment)
         instance.anonymous = validated_data.get('anonymous', instance.anonymous)
         instance.save()
         return instance
 
 
-class FundraiserDetailSerializer(FundraiserSerializer):
-    pledges = PledgeSerializer(many=True, read_only=True)
+class CaseDetailSerializer(CaseSerializer):
+    judgements = JudgementSerializer(many=True, read_only=True)
     def update(self, instance, validated_data):
         instance.title = validated_data.get('title', instance.title)
         instance.description = validated_data.get('description', instance.description)
-        instance.goal = validated_data.get('goal', instance.goal)
         instance.image = validated_data.get('image', instance.image)
         instance.is_open = validated_data.get('is_open', instance.is_open)
         instance.date_created = validated_data.get('date_created', instance.date_created)
