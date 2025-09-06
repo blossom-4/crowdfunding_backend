@@ -43,16 +43,18 @@ It can be helpful to keep the markdown preview open in VS Code so that you can s
 
 | URL             | HTTP Method               | Purpose | Request Body                  | Success Response Code | Authentication/Authorisation |
 | --------------- | ------------------------- | ------- | ----------------------------- | --------------------- | ---------------------------- |
-| /cases   | Fetch all the cases | GET     | N/A                           | 200                   | None                         |
-| /cases    | Create new case     | POST    | JSON Payload                  | 201                   | Any logged in user           |
+| /users/   | POST | Create a new user     | `{"username": "investigator", "password": "123"}`  | 201                   | api-token-auth/                         |
+| /api-token-auth/    | POST | Get auth token    | `{"username": "investigator", "password": "123"}`  | 200                   | bearer                        |
+| /cases/    | POST     | Create new case     | JSON Payload                  | 201                   | Any logged in user           |
 | /cases/1/ |                           |         |                               |                       |                              |
 | /cases    |                           | GET     | N/A                           | 200                   |                              |
 | /cases    | Create new judgement        | POST    | {"case_id} JSON Payload | 201                   | Any logged in user           |
 ### DB Schema
-![]( {{ ./relative/path/to/your/schema/image.png }} )
+![DB_Schema](image-1.png)
 
-
-
+![GET_all_cases](GET_all_cases.png)
+![POST_](POST_new_judgement.png)
+![POST_token_return](POST_token_return.png)
 
 
 !!!!Future developments, only let people judge once
