@@ -1,5 +1,5 @@
 # Crowdfunding Back End
-Raise the dead / Crowd Trial / Raise the Case / Crowd Court
+Raise the Case
 
 ## Planning:
 ### Concept/Name
@@ -7,20 +7,19 @@ A crowd-powered platform where the public helps “try” cases and mysteries in
 
 ### Intended Audience/User Stories
 Users - Victims who feel the justice system has failed them or can't access it, or for crimes that are petty and would not be put before a jury. 
-Audience - True crime enthusiast, civil-minded citizens, gamified social media users, social justice warriors, investigators or nosy people. 
+Audience - True crime enthusiast, civil-minded citizens, gamified social media users, social justice warriors, investigators and nosy people. 
 
 ### Front End Pages/Functionality
 - Homepage
   - Featured cases (spotlighted by popularity, urgency, or recency).
   - Search bar + filters (by case type: murder, fraud, cold case, celebrity scandal, etc.).
-  - Quick “Vote Now” button to jump into trending cases.
+  - Quick “Justice Now” button to jump into trending cases.
 
 - Case Detail Page
   - Case summary: timeline, suspects, evidence (text, images, videos).
-  - Voting options: “Guilty” / “Not Guilty” / “Undecided.”
+  - Voting options: “Guilty” / “Not Guilty” 
   - Voting stats displayed in real time (pie chart or percentages).
   - Comment/discussion section for arguments & theories.
-  - Donation/funding panel (support case investigation or rewards).
   - “Related cases” sidebar to keep users engaged.
 
 - Voting / Verdict Submission Page
@@ -44,10 +43,16 @@ It can be helpful to keep the markdown preview open in VS Code so that you can s
 
 | URL             | HTTP Method               | Purpose | Request Body                  | Success Response Code | Authentication/Authorisation |
 | --------------- | ------------------------- | ------- | ----------------------------- | --------------------- | ---------------------------- |
-| /fundraisers    | Fetch all the fundraisers | GET     | N/A                           | 200                   | None                         |
-| /fundraisers    | Create new fundraiser     | POST    | JSON Payload                  | 201                   | Any logged in user           |
-| /fundraisers/1/ |                           |         |                               |                       |                              |
-| /fundraisers    |                           | GET     | N/A                           | 200                   |                              |
-| /fundraisers    | Create new pledge         | POST    | {"fundraiser_id} JSON Payload | 201                   | Any logged in user           |
+| /cases   | Fetch all the cases | GET     | N/A                           | 200                   | None                         |
+| /cases    | Create new case     | POST    | JSON Payload                  | 201                   | Any logged in user           |
+| /cases/1/ |                           |         |                               |                       |                              |
+| /cases    |                           | GET     | N/A                           | 200                   |                              |
+| /cases    | Create new judgement        | POST    | {"case_id} JSON Payload | 201                   | Any logged in user           |
 ### DB Schema
 ![]( {{ ./relative/path/to/your/schema/image.png }} )
+
+
+
+
+
+!!!!Future developments, only let people judge once

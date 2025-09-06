@@ -40,7 +40,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
-    'fundraisers.apps.FundraisersConfig',
+    'cases.apps.CasesConfig',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',

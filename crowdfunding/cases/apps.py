@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class FundraisersConfig(AppConfig):
+class CasesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'fundraisers'
+    name = 'cases'
