@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 class Case(models.Model):
    title = models.CharField(max_length=200)
    description = models.TextField()
-   image = models.URLField()
+   image = models.URLField(max_length=10000)
    is_open = models.BooleanField()
    date_created = models.DateTimeField(auto_now_add=True)
    owner = models.ForeignKey(
