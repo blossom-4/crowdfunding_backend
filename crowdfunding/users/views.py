@@ -1,11 +1,13 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from django.http import Http404
 from . models import CustomUser
 from . serailizers import CustomUserSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
+from cases.models import Case, Judgement
 
 class CustomUserList(APIView):
     def get(self, request):
@@ -55,3 +57,39 @@ class CustomAuthToken(ObtainAuthToken):
             'user_id': user.id,
             'email': user.email
         })
+
+class UserStats(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request):
+        user = request.user
+        cases_count = Case.objects.filter(owner=user).count()
+        judgments_count = Judgement.objects.filter(supporter=user).count()
+        
+        return Response({
+            'cases_count': cases_count,
+            'judgments_count': judgments_count
+        })
+
+class UserProfile(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def put(self, request):
+        user = request.user
+        serializer = CustomUserSerializer(user, data=request.data, partial=True)
+        
+        if serializer.is_valid():
+            if 'password' in request.data and request.data['password']:
+                user.set_password(request.data['password'])
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request):
+        user = request.user
+        user.delete()
+        return Response(
+            {'message': 'Account deleted successfully'},
+            status=status.HTTP_204_NO_CONTENT
+        )
